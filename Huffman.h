@@ -94,7 +94,6 @@ Node* Huffman::tao_cay_Huffman(string van_ban, string output_path) {
       ki_tu = '_';
     }
     OutputFile<<ki_tu<<" "<<pair.second<<" ";
-    cout<<pair.first<<" "<<pair.second<<endl;
   }
   // Tạo container để lưu trữ tần số các kí tự
   // Sao cho các kí tự có tần số nhỏ nhất

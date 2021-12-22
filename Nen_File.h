@@ -16,7 +16,7 @@ void nen_file(string input_path) {
   getline(MyReadFile, van_ban);
 
   Huffman cay_ma;
-  string output_path = tach_extension(input_path) + "_giai" +".txt";
+  string output_path = tach_extension(input_path) + "_giainen" +".txt";
 
   Node* root = cay_ma.tao_cay_Huffman(van_ban, output_path);
 
