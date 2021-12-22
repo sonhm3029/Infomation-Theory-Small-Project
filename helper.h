@@ -155,3 +155,20 @@ bool isSame(vector <kieu_dl> arr1, vector<kieu_dl> arr2) {
   }
   return true;
 }
+
+string tach_extension(string path) {
+  string result_path = "";
+  int vi_tri_extension;
+  for(int i = path.size()-1; i>=0; i--) {
+    if(path[i] == '.') {
+      vi_tri_extension = i;
+      break;
+    }
+  }
+
+  for(int i = 0; i<vi_tri_extension; i++) {
+    result_path += path[i];
+  }
+
+  return result_path;
+}
