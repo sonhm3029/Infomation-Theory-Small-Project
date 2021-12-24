@@ -29,6 +29,10 @@ void nen_file(string input_path) {
     cout<<pair.first<<" "<<pair.second<<'\n';
   }
 
+  // Tính toán tỷ số nén:
+  cout<<"\nTỷ số nén: "<<cay_ma.ty_so_nen(huffmanCode);
+  
+
   // Mã hóa văn bản với bảng mã đã lập
   string vb_da_ma_hoa = "";
   for(char ki_tu: van_ban) {

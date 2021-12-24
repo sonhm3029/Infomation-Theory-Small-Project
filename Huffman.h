@@ -30,11 +30,13 @@ struct comp {
 };
 
 class Huffman {
+  unordered_map<char, int> bang_tan_so;
   public:
     void ma_hoa(Node* root, string danh_so, unordered_map<char, string> &huffManCode);
     void giai_ma(Node* root, int &index, string encoded_str);
     Node* tao_cay_Huffman(string van_ban, string output_path);
     Node* tao_cay_Huffman(priority_queue<Node*, vector<Node*>, comp> container);
+    double ty_so_nen(unordered_map<char, string> huffmanCode);
 };
 
 
@@ -80,7 +82,7 @@ void Huffman::giai_ma(Node* root, int &index, string encoded_str) {
 Node* Huffman::tao_cay_Huffman(string van_ban, string output_path) {
 
   // Bảng đếm tần số xuất hiện của các kí tự
-  unordered_map<char, int> bang_tan_so;
+  // unordered_map<char, int> bang_tan_so;
   for(char ch: van_ban) {
     bang_tan_so[ch]++;
   }
@@ -153,6 +155,30 @@ Node* Huffman::tao_cay_Huffman(priority_queue<Node*, vector<Node*>, comp> contai
   Node* root = container.top();
 
   return root;
+}
+
+double Huffman::ty_so_nen(unordered_map<char, string> huffmanCode) {
+  int tong_ki_tu = 0;
+  for(auto pair:bang_tan_so) {
+    tong_ki_tu += pair.second;
+  }
+  
+  // Tính toán entropy
+  double Hx = 0;
+  for(auto pair:bang_tan_so) {
+    double p_xi = double(pair.second)/tong_ki_tu;
+    Hx += p_xi*(luong_tin_rieng(p_xi));
+  }
+
+  // Tính toán độ dài trung bình từ mã
+  double l_tb = 0;
+  for(auto pair: huffmanCode) {
+    double p_xi = double(bang_tan_so[pair.first])/tong_ki_tu;
+    l_tb += p_xi*((pair.second).size());
+  }
+
+  
+  return Hx/l_tb;
 }
 
 
